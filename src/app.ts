@@ -6,6 +6,7 @@ import { errorHandler } from './middleware/errorHandler';
 import prisma from './config/database';
 import { sendSuccess } from './utils/response';
 import authRouter from './routes/auth.routes';
+import projectRouter from './routes/project.routes';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.get('/health', async (_req, res) => {
 
 // Routes
 app.use('/api/auth', authRouter);
+app.use('/api/projects', projectRouter);
 
 // Error handler (must be last)
 app.use(errorHandler);
