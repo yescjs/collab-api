@@ -5,6 +5,7 @@ import { requestLogger } from './middleware/requestLogger';
 import { errorHandler } from './middleware/errorHandler';
 import prisma from './config/database';
 import { sendSuccess } from './utils/response';
+import authRouter from './routes/auth.routes';
 
 const app = express();
 
@@ -24,7 +25,8 @@ app.get('/health', async (_req, res) => {
   }
 });
 
-// Routes will be added in later tasks
+// Routes
+app.use('/api/auth', authRouter);
 
 // Error handler (must be last)
 app.use(errorHandler);
