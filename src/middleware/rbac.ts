@@ -21,7 +21,7 @@ export function requireProjectRole(...roles: ProjectRole[]) {
       throw new AppError(401, 'UNAUTHORIZED', 'Authentication required');
     }
 
-    const projectId = req.params.id || req.params.pid;
+    const projectId = (req.params.id || req.params.pid) as string | undefined;
     if (!projectId) {
       throw new AppError(400, 'BAD_REQUEST', 'Project ID is required');
     }

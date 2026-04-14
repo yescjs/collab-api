@@ -23,10 +23,10 @@ interface TokenPayload {
 
 function generateTokens(payload: TokenPayload) {
   const accessToken = jwt.sign(payload, env.JWT_SECRET, {
-    expiresIn: env.JWT_EXPIRES_IN,
+    expiresIn: env.JWT_EXPIRES_IN as unknown as number,
   });
   const refreshToken = jwt.sign(payload, env.JWT_REFRESH_SECRET, {
-    expiresIn: env.JWT_REFRESH_EXPIRES_IN,
+    expiresIn: env.JWT_REFRESH_EXPIRES_IN as unknown as number,
   });
   return { accessToken, refreshToken };
 }
